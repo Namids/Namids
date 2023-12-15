@@ -1,0 +1,103 @@
+// Sample historical price data (replace with your actual data)
+const priceData = [
+  100, 110, 120, 130, 140, 130, 120, 110, 100, 110, 120, 130, 140
+];
+
+// Function to detect head and shoulder pattern
+function detectHeadAndShoulder(prices) {
+  // Ensure enough data points for analysis
+  if (prices.length < 15) {
+    console.log('Insufficient data for pattern detection.');
+    return false;
+  }
+
+  // Define index ranges for left shoulder, head, and right shoulder
+  const leftShoulderRange = { start: 5, end: 9 };
+  const headRange = { start: 10, end: 12 };
+  const rightShoulderRange = { start: 13, end: 14 };
+
+  // Extract relevant price data for each range
+  const leftShoulderPrices = prices.slice(leftShoulderRange.start, leftShoulderRange.end + 1);
+  const headPrices = prices.slice(headRange.start, headRange.end + 1);
+  const rightShoulderPrices = prices.slice(rightShoulderRange.start, rightShoulderRange.end + 1);
+
+  // Find the highest point in each range
+  const leftShoulderHigh = Math.max(...leftShoulderPrices);
+  const headHigh = Math.max(...headPrices);
+  const rightShoulderHigh = Math.max(...rightShoulderPrices);
+
+  // Find the indices of the highest points
+  const leftShoulderHighIndex = leftShoulderPrices.indexOf(leftShoulderHigh) + leftShoulderRange.start;
+  const headHighIndex = headPrices.indexOf(headHigh) + headRange.start;
+  const rightShoulderHighIndex = rightShoulderPrices.indexOf(rightShoulderHigh) + rightShoulderRange.start;
+
+  // Check if the pattern is detected
+  const isPatternDetected =
+    leftShoulderHigh < headHigh &&
+    rightShoulderHigh < headHigh &&
+    headHighIndex > leftShoulderHighIndex &&
+    headHighIndex > rightShoulderHighIndex;
+
+  return isPatternDetected;
+}
+
+// Detect head and shoulder pattern
+const headShoulderPattern = detectHeadAndShoulder(priceData);
+
+// Check if head and shoulder pattern is detected
+if (headShoulderPattern) {
+  console.log('Head and Shoulder pattern detected!');
+} else {
+  console.log('No Head and Shoulder pattern detected.');
+}// Sample historical price data (replace with your actual data)
+const priceData = [
+  100, 110, 120, 130, 140, 130, 120, 110, 100, 110, 120, 130, 140
+];
+
+// Function to detect head and shoulder pattern
+function detectHeadAndShoulder(prices) {
+  // Ensure enough data points for analysis
+  if (prices.length < 15) {
+    console.log('Insufficient data for pattern detection.');
+    return false;
+  }
+
+  // Define index ranges for left shoulder, head, and right shoulder
+  const leftShoulderRange = { start: 5, end: 9 };
+  const headRange = { start: 10, end: 12 };
+  const rightShoulderRange = { start: 13, end: 14 };
+
+  // Extract relevant price data for each range
+  const leftShoulderPrices = prices.slice(leftShoulderRange.start, leftShoulderRange.end + 1);
+  const headPrices = prices.slice(headRange.start, headRange.end + 1);
+  const rightShoulderPrices = prices.slice(rightShoulderRange.start, rightShoulderRange.end + 1);
+
+  // Find the highest point in each range
+  const leftShoulderHigh = Math.max(...leftShoulderPrices);
+  const headHigh = Math.max(...headPrices);
+  const rightShoulderHigh = Math.max(...rightShoulderPrices);
+
+  // Find the indices of the highest points
+  const leftShoulderHighIndex = leftShoulderPrices.indexOf(leftShoulderHigh) + leftShoulderRange.start;
+  const headHighIndex = headPrices.indexOf(headHigh) + headRange.start;
+  const rightShoulderHighIndex = rightShoulderPrices.indexOf(rightShoulderHigh) + rightShoulderRange.start;
+
+  // Check if the pattern is detected
+  const isPatternDetected =
+    leftShoulderHigh < headHigh &&
+    rightShoulderHigh < headHigh &&
+    headHighIndex > leftShoulderHighIndex &&
+    headHighIndex > rightShoulderHighIndex;
+
+  return isPatternDetected;
+}
+
+// Detect head and shoulder pattern
+const headShoulderPattern = detectHeadAndShoulder(priceData);
+
+// Check if head and shoulder pattern is detected
+if (headShoulderPattern) {
+  console.log('Head and Shoulder pattern detected!');
+} else {
+  console.log('No Head and Shoulder pattern detected.');
+}
